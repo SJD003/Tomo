@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f6ff">
+    <meta name="description" content="مساحة عربية صغيرة للضحك واللعب مع أصدقاء خياليين لطيفين.">
+    <meta name="color-scheme" content="light">
+    <title>فُسحة — استراحة مرحة</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icons/fusha.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icons/fusha.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="فُسحة، الصفحة الرئيسية">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M20 34C8 27 4 20 8 13c3-5 9-4 12 1 3-5 9-6 12-1 4 7 0 14-12 21Z" fill="currentColor"/><path d="M20 14v17" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span>فُسحة<span class="brand-dot">.</span></span>
+        </a>
+        <div class="topbar-actions">
+          <span class="sound-label">الأصوات</span>
+          <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="true" aria-label="إيقاف الأصوات">
+            <svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm4 4a5 5 0 0 1 0 6m3-9a9 9 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm5 4 5 6m0-6-5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="soundText">مفعّلة</span>
+          </button>
+          <span class="topbar-divider" aria-hidden="true"></span>
+          <button class="reset-button" id="resetButton" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0 1 4m-1-9v5h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>من جديد</span>
+          </button>
+          <button class="install-button" id="installButton" type="button" hidden>أضفها لجهازك</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="pageTitle">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-sparkle" aria-hidden="true">✳</span> مساحة للتجربة وتغيير المزاج</div>
+            <h1 id="pageTitle">شويّة لعب، <span>كثير ابتسامات.</span></h1>
+            <p>استراحة تفاعلية ثلاثية الأبعاد: المس واسحب وراقب كيف يتبدّل الإيقاع.</p>
+          </div>
+          <div class="kindness-note">
+            <span class="kindness-icon" aria-hidden="true">☁</span>
+            <span>مناوشات كرتونية<br><strong>بلا إصابات أو مشاهد عنيفة.</strong></span>
+          </div>
+        </section>
+        <div class="connection-status" id="connectionStatus" role="status" aria-live="polite"></div>
+
+        <div class="game-layout">
+          <section class="play-column" aria-label="مساحة اللعب">
+            <div class="scene-card" id="sceneCard" data-scene="garden">
+              <div class="scene-toolbar">
+                <div class="scene-heading">
+                  <span class="scene-live-dot" aria-hidden="true"></span>
+                  <div><span class="scene-kicker">نحن الآن في</span><strong id="sceneTitle">حديقة الغيمة</strong></div>
+                </div>
+                <div class="location-picker" role="group" aria-label="اختيار مكان اللعب">
+                  <button class="location-button is-selected" type="button" data-scene-choice="garden" aria-pressed="true" aria-label="حديقة الغيمة"><span>🌱</span></button>
+                  <button class="location-button" type="button" data-scene-choice="sky" aria-pressed="false" aria-label="جزيرة الغيم"><span>☁️</span></button>
+                  <button class="location-button" type="button" data-scene-choice="studio" aria-pressed="false" aria-label="ورشة الألوان"><span>🎨</span></button>
+                </div>
+              </div>
+
+              <div class="scene-art" id="sceneArt">
+                <span class="sun-art" aria-hidden="true"><span></span></span>
+                <span class="cloud cloud-one" aria-hidden="true"></span>
+                <span class="cloud cloud-two" aria-hidden="true"></span>
+                <div class="scene-props" aria-hidden="true">
+                  <span class="scene-stone stone-left"></span>
+                  <span class="scene-stone stone-right"></span>
+                  <span class="scene-mushroom mushroom-left"></span>
+                  <span class="scene-mushroom mushroom-right"></span>
+                  <span class="scene-crystal"></span>
+                  <span class="scene-grass grass-left"></span>
+                  <span class="scene-grass grass-right"></span>
+                </div>
+                <div class="scene-ground" aria-hidden="true"></div>
+                <span class="scene-decoration deco-left" aria-hidden="true">✿</span>
+                <span class="scene-decoration deco-right" aria-hidden="true">✧</span>
+                <div class="scene-caption" aria-hidden="true"><span>استراحة صغيرة...</span><span>على مزاجك ☺</span></div>
+                <div class="character-stage" id="characterStage" role="group" tabindex="0" aria-label="لوز، المس أي جزء من الشخصية أو اسحب بلطف">
+                  <div id="characterArt" class="character-art" aria-label="لوز، صديقك الخيالي"></div>
+                </div>
+                <div class="character-shadow" aria-hidden="true"></div>
+                <div class="ground-mark ground-left" aria-hidden="true"></div>
+                <div class="ground-mark ground-right" aria-hidden="true"></div>
+              </div>
+
+              <div class="scene-footer">
+                <span class="hint-icon" aria-hidden="true">✦</span>
+                <span>بدّل المكان لتكتشف تفاصيله؛ المس واسحب، وشاهد الأرض والمشهد يتفاعلان! ✨</span>
+              </div>
+            </div>
+
+            <div class="relax-card">
+              <div class="relax-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 26s-9-5.3-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.7-9 12-9 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M11 16h3l2-4 3 8 2-4h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="relax-copy">
+                <div class="relax-title-line"><strong>عداد الابتسامات</strong><span id="moodLabel">بداية جميلة</span></div>
+                <div class="mood-track" id="moodTrack" role="progressbar" aria-label="عداد الابتسامات" aria-valuemin="0" aria-valuemax="100" aria-valuenow="18"><span id="moodFill"></span></div>
+              </div>
+              <span class="smile-count"><span id="smileCount">٠</span><span>ابتسامة</span><span class="count-sparkle" aria-hidden="true">✦</span></span>
+            </div>
+            <section class="breathing-card" id="breathingCard" aria-label="استراحة تنفّس موجّهة">
+              <div class="breathing-orb-wrap" aria-hidden="true"><span class="breathing-orb" id="breathingOrb"></span></div>
+              <div class="breathing-copy">
+                <strong>استراحة تنفّس</strong>
+                <span id="breathingPhase" aria-live="polite">أربعون ثانية من الهدوء</span>
+                <span class="breathing-count" id="breathingCount"></span>
+              </div>
+              <button class="breathing-button" id="breathingButton" type="button">ابدأ</button>
+            </section>
+          </section>
+
+          <aside class="custom-panel" aria-label="تخصيص اللعبة">
+            <div class="panel-header">
+              <div class="panel-heading">
+                <span class="panel-kicker">خلّها تشبهك</span>
+                <h2>الشخصية والجوّ</h2>
+              </div>
+              <div class="panel-actions">
+                <button class="surprise-button" id="surpriseButton" type="button" aria-label="اختيار أجواء وتنسيق مفاجئ">
+                  <span aria-hidden="true">✦</span> فاجئني
+                </button>
+                <span class="custom-stamp" aria-hidden="true">☺</span>
+              </div>
+            </div>
+            <span class="sr-only" id="surpriseStatus" role="status" aria-live="polite" aria-atomic="true"></span>
+
+            <fieldset class="option-section character-options">
+              <legend><span class="step-number">١</span><span>اختر شخصية</span></legend>
+              <div class="character-choices">
+                <button class="friend-choice is-selected" type="button" data-character="louz" aria-pressed="true">
+                  <span class="friend-avatar avatar-louz" aria-hidden="true"><span></span><i></i><b></b></span>
+                  <span>لوز</span>
+                </button>
+                <button class="friend-choice" type="button" data-character="marmar" aria-pressed="false">
+                  <span class="friend-avatar avatar-marmar" aria-hidden="true"><span></span><i></i><b></b></span>
+                  <span>مرمر</span>
+                </button>
+                <button class="friend-choice" type="button" data-character="shamoos" aria-pressed="false">
+                  <span class="friend-avatar avatar-shamoos" aria-hidden="true"><span></span><i></i><b></b></span>
+                  <span>شموس</span>
+                </button>
+              </div>
+            </fieldset>
+
+            <fieldset class="option-section">
+              <legend><span class="step-number">٢</span><span>لمسة من ذوقك</span></legend>
+              <div class="select-wrap">
+                <label for="outfitSelect">الملابس</label>
+                <select id="outfitSelect">
+                  <option value="scarf">وشاح الغيمة ☁</option>
+                  <option value="overalls">أفرول الرسّام 🎨</option>
+                  <option value="cape">عباءة النجمة ✨</option>
+                  <option value="none">بدون إضافات</option>
+                </select>
+                <span class="select-chevron" aria-hidden="true">⌄</span>
+              </div>
+              <div class="accessory-row">
+                <span class="accessory-label">إكسسوار</span>
+                <div class="accessory-options" role="group" aria-label="اختيار إكسسوار">
+                  <button type="button" class="accessory-button is-selected" data-accessory="flower" aria-pressed="true" aria-label="زهرة صغيرة">🌼</button>
+                  <button type="button" class="accessory-button" data-accessory="star" aria-pressed="false" aria-label="نجمة لامعة">⭐</button>
+                  <button type="button" class="accessory-button" data-accessory="glasses" aria-pressed="false" aria-label="نظارات مرحة">🕶️</button>
+                  <button type="button" class="accessory-button" data-accessory="none" aria-pressed="false" aria-label="بدون إكسسوار">×</button>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="panel-separator" aria-hidden="true"></div>
+            <div class="tip-card"><span class="tip-icon" aria-hidden="true">💡</span><p><strong>فكرة مرحة</strong><br>جرّب لمسات سريعة وأخرى أطول، ولاحظ كيف تتغيّر الحركة!</p></div>
+            <button class="breath-button" id="breathButton" type="button"><span aria-hidden="true">♡</span> أرسل طمأنينة</button>
+            <fieldset class="accessibility-options">
+              <legend>الراحة وإمكانية الوصول</legend>
+              <label class="preference-toggle" for="reducedMotionToggle"><span>تقليل الحركة</span><input id="reducedMotionToggle" type="checkbox"></label>
+              <label class="preference-toggle" for="highContrastToggle"><span>تباين أوضح</span><input id="highContrastToggle" type="checkbox"></label>
+              <label class="volume-control" for="volumeControl"><span>مستوى الصوت</span><input id="volumeControl" type="range" min="0" max="100" value="65"><output id="volumeValue" for="volumeControl">٦٥٪</output></label>
+            </fieldset>
+          </aside>
+        </div>
+      </main>
+      <footer class="page-footer"><span>صُنع بابتسامة صغيرة <span aria-hidden="true">♥</span></span><span>كل شخصياتنا خيالية، واختياراتك تبقى على جهازك.</span></footer>
+    </div>
+    <dialog class="install-dialog" id="installDialog" aria-labelledby="installTitle">
+      <form method="dialog">
+        <button class="dialog-close" type="submit" aria-label="إغلاق">×</button>
+        <span class="dialog-icon" aria-hidden="true">✿</span>
+        <h2 id="installTitle">فُسحة معك أينما كنت</h2>
+        <p>من قائمة المتصفح، اختر «إضافة إلى الشاشة الرئيسية» أو «تثبيت التطبيق». ستعمل فُسحة دون اتصال بعد زيارتك الأولى.</p>
+        <button class="dialog-confirm" type="submit">حسنًا</button>
+      </form>
+    </dialog>
+  </body>
+</html>

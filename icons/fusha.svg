@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#a9d9bd"/>
+      <stop offset="1" stop-color="#7655d9"/>
+    </linearGradient>
+    <linearGradient id="heart" x1=".2" y1="0" x2=".8" y2="1">
+      <stop stop-color="#fff8e7"/>
+      <stop offset="1" stop-color="#f0cf83"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="122" fill="url(#sky)"/>
+  <circle cx="397" cy="114" r="46" fill="#ffedbf" opacity=".9"/>
+  <path d="M256 405C131 329 91 258 121 194c25-53 89-55 135-8 46-47 110-45 135 8 30 64-10 135-135 211Z" fill="url(#heart)" stroke="#fff" stroke-opacity=".72" stroke-width="15" stroke-linejoin="round"/>
+  <path d="M256 193v175" fill="none" stroke="#9b8155" stroke-linecap="round" stroke-width="16"/>
+  <path d="M256 310c-43-32-76-37-104-23 24 2 46 13 67 35-19 17-34 36-43 58 26-27 53-45 80-50m0-20c42-32 75-37 103-23-24 2-46 13-67 35 19 17 34 36 43 58-26-27-53-45-79-50" fill="#83c8a4" stroke="#83c8a4" stroke-linecap="round" stroke-linejoin="round" stroke-width="11"/>
+</svg>
